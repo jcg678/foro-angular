@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import { Topic} from '../../../models/topic';
 import { UserService } from '../../../services/user.service';
+import { TopicService} from '../../../services/topic.service';
 
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css'],
-  providers: [UserService]
+  providers: [UserService, TopicService]
 })
 export class AddComponent implements OnInit {
   public page_title: string;
@@ -19,7 +20,8 @@ export class AddComponent implements OnInit {
   constructor(
     private _route :ActivatedRoute,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private _topicsService: TopicService
   ) {
     this.page_title = 'Crear nuevo Tema';
     this.identity = this._userService.getIdentity();
@@ -27,6 +29,7 @@ export class AddComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this._topicsService.prueba());
   }
 
   onSubmit(form){
