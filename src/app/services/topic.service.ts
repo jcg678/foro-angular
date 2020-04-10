@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { global} from './global';
 
@@ -14,6 +14,13 @@ export class TopicService {
 
   prueba(){
     return "Servicio de topci";
+  }
+
+  addTopic(token, topic):Observable<any>{
+    let params = JSON.stringify(topic);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', token);
+
+    return this._http.post(this.url+'topic', params, {headers:headers});
   }
 
 }

@@ -25,6 +25,7 @@ export class AddComponent implements OnInit {
   ) {
     this.page_title = 'Crear nuevo Tema';
     this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken();
     this.topic = new Topic('','','','','','',this.identity._id,null);
   }
 
@@ -32,8 +33,21 @@ export class AddComponent implements OnInit {
     console.log(this._topicsService.prueba());
   }
 
-  onSubmit(form){
-    console.log(form);
-    console.log(this.topic);
+  onSubmit(){
+    this._topicsService.addTopic(this.token, this.topic).subscribe(
+      response =>{
+          if(response.topic){
+            this.status = 'success';
+            this.topic = response.topic;
+            this._router.navigate(['/panel']);
+          }else{
+            this.status = 'error';
+          }
+      },
+      error => {
+        this.status = 'error';
+        console.log(error);
+      }
+    );
   }
 }
