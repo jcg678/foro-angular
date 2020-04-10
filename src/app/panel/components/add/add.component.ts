@@ -23,10 +23,14 @@ export class AddComponent implements OnInit {
   ) {
     this.page_title = 'Crear nuevo Tema';
     this.identity = this._userService.getIdentity();
-    this.topic = new Topic('','','','','','',this.identity.sub,null);
+    this.topic = new Topic('','','','','','',this.identity._id,null);
   }
 
   ngOnInit() {
   }
 
+  onSubmit(form){
+    console.log(form);
+    console.log(this.topic);
+  }
 }
