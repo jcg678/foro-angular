@@ -3,6 +3,7 @@ import { CommonModule} from '@angular/common';
 import { FormsModule} from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { PanelRoutingModule } from './panel-routing.module';
+import { MomentModule } from 'angular2-moment';
 
 import { MainComponent } from './main/main.component';
 import { AddComponent } from './add/add.component';
@@ -20,7 +21,8 @@ import { ListComponent } from './list/list.component';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    PanelRoutingModule
+    PanelRoutingModule,
+    MomentModule
   ],
   exports:[
     MainComponent,
