@@ -26,7 +26,6 @@ export class ListComponent implements OnInit {
     this.page_title = 'Mis Temas';
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    //this.topics = new Topic('','','','','','',this.identity._id,null);
   }
 
   ngOnInit() {
@@ -43,6 +42,17 @@ export class ListComponent implements OnInit {
       },
       error => {
           console.log(error);
+      }
+    );
+  }
+
+  deleteTopic(id){
+    this._topicsService.delete(this.token, id).subscribe(
+      response => {
+        this.getTopics();
+      },
+      error => {
+        console.log(error);
       }
     );
   }

@@ -33,10 +33,14 @@ export class TopicService {
     return this._http.get(this.url+'topic/'+id);
   }
 
-  update(token, id, topic):Observable<any>{
+  update(token, id, topic): Observable<any> {
     const params = JSON.stringify(topic);
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', token);
     return this._http.put(this.url + 'topic/' + id, params, {headers: headers});
   }
 
+  delete(token, id): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', token);
+    return this._http.delete(this.url + 'topic/' + id,  { headers: headers});
+  }
 }
