@@ -6,6 +6,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {HomeComponent} from './components/home/home.component';
 import {UserEditComponent} from './components/user-edit/user-edit.component';
 import {TopicsComponent} from './components/topics/topics.component';
+import {TopicDetailComponent} from './components/topic-detail/topic-detail.component';
 
 const appRoutes: Routes =[
   {path: '', component: HomeComponent},
@@ -15,7 +16,8 @@ const appRoutes: Routes =[
   {path: 'ajustes', component: UserEditComponent},
   {path: 'temas', component: TopicsComponent},
   {path: 'temas/:page', component: TopicsComponent},
-  {path: '**', component: LoginComponent}
+  {path: 'tema/:id', component: TopicDetailComponent},
+  {path: '**', component: HomeComponent}
 ];
 
 export const appRoutingProviders: any[] = [];
