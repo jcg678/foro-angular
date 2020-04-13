@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFileUploaderModule} from 'angular-file-uploader';
 import { MomentModule } from 'angular2-moment';
+import { NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 
 import { PanelModule } from './panel/components/panel.module';
 
@@ -35,7 +36,8 @@ import { TopicDetailComponent } from './components/topic-detail/topic-detail.com
     HttpClientModule,
     AngularFileUploaderModule,
     PanelModule,
-    MomentModule
+    MomentModule,
+    NgxHighlightJsModule.forRoot()
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
