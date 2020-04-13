@@ -29,8 +29,8 @@ export class TopicService {
     return this._http.get(this.url+'user-topics/'+userId, {headers: headers});
   }
 
-  getTopic(id):Observable<any>{
-    return this._http.get(this.url+'topic/'+id);
+  getTopic(id): Observable <any> {
+    return this._http.get(this.url + 'topic/' + id);
   }
 
   update(token, id, topic): Observable<any> {
@@ -47,5 +47,6 @@ export class TopicService {
   getTopics(page = 1): Observable <any> {
     return this._http.get(this.url + 'topics/' + page);
   }
-
 }
+
+
