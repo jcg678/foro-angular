@@ -16,7 +16,16 @@
   <div id="comment-box" class="mt-2 col-lg-9">
     <h3>Comentarios</h3>
     <hr>
-    <form #formComment="ngForm"  (ngSubmit)="onSubmit(form)" *ngIf="identity" >
+    <div class="alert alert-success  mt-3" *ngIf="status == 'success'">
+      El comentario se ha añadido correctamente
+    </div>
+
+    <div class="alert alert-danger col-md-5 mt-3" *ngIf="status == 'error'">
+      El comentario no se ha añadido
+    </div>
+
+
+    <form #formComment="ngForm"  (ngSubmit)="onSubmit(formComment)" *ngIf="identity" >
       <div class="form-group">
         <label for="content">Pon tu comentario:</label>
         <textarea type="text" name="content" #content="ngModel" [(ngModel)]="comment.content" required  class="form-control"></textarea>

@@ -4,7 +4,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { Topic} from '../../models/topic';
 import { TopicService } from '../../services/topic.service';
 import {UserService} from '../../services/user.service';
-
+import {CommentService} from '../../services/comment.service';
 import {Comments} from '../../models/comments';
 
 
@@ -12,7 +12,7 @@ import {Comments} from '../../models/comments';
   selector: 'app-topic-detail',
   templateUrl: './topic-detail.component.html',
   styleUrls: ['./topic-detail.component.css'],
-  providers: [TopicService, UserService]
+  providers: [TopicService, UserService, CommentService]
 })
 export class TopicDetailComponent implements OnInit {
 
@@ -26,7 +26,8 @@ export class TopicDetailComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _topicService: TopicService,
-    private _userService: UserService
+    private _userService: UserService,
+    private _commentService: CommentService
   ){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -56,6 +57,21 @@ export class TopicDetailComponent implements OnInit {
 
   onSubmit(form){
     console.log(this.comment);
+    this._commentService.add(this.token, this.comment, this.topic._id).subscribe(
+      response => {
+        if (!response.topic) {
+          this.status = 'error';
+        } else {
+          this.status = 'success';
+          this.topic = response.topic;
+          form.reset();
+        }
+      },
+      error => {
+        this.status = 'error';
+        console.log(error);
+      }
+    );
   }
 
 }
