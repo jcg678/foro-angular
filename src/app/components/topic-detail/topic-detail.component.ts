@@ -54,4 +54,8 @@ export class TopicDetailComponent implements OnInit {
     });
   }
 
+  onSubmit(form){
+    console.log(this.comment);
+  }
+
 }
