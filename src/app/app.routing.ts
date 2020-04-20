@@ -9,12 +9,13 @@ import {TopicsComponent} from './components/topics/topics.component';
 import {TopicDetailComponent} from './components/topic-detail/topic-detail.component';
 
 import { UserGuard } from './services/user.guard';
+import {NoIdentityGuard} from './services/no.identity.guard';
 
 const appRoutes: Routes =[
   {path: '', component: HomeComponent},
   {path: 'inicio', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'registro', component: RegisterComponent},
+  {path: 'login', canActivate: [NoIdentityGuard], component: LoginComponent},
+  {path: 'registro', canActivate: [NoIdentityGuard], component: RegisterComponent},
   {path: 'ajustes', canActivate: [UserGuard], component: UserEditComponent},
   {path: 'temas', component: TopicsComponent},
   {path: 'temas/:page', component: TopicsComponent},

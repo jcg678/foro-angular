@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 
 
 @Injectable()
-export class UserGuard implements CanActivate {
+export class NoIdentityGuard implements CanActivate {
   constructor(
     private _router: Router,
     private _userService: UserService
@@ -15,10 +15,10 @@ export class UserGuard implements CanActivate {
     const identity = this._userService.getIdentity();
 
     if (identity && identity.name) {
-      return true;
-    } else {
       this._router.navigate(['/inicio']);
       return false;
+    } else {
+      return true;
     }
   }
 }
