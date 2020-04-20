@@ -13,11 +13,13 @@ import { global} from '../../services/global';
 export class UsersComponent implements OnInit {
   public users: User[];
   public url: string;
+  public page_title: string;
 
   constructor(
     private _userService: UserService
   ) {
     this.url = global.url;
+    this.page_title = 'Compañeros';
   }
 
   ngOnInit() {
