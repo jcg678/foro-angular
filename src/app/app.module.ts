@@ -17,6 +17,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { TopicsComponent } from './components/topics/topics.component';
 import { TopicDetailComponent } from './components/topic-detail/topic-detail.component';
 
+import { UserService } from './services/user.service';
+import { UserGuard } from './services/user.guard';
 
 
 @NgModule({
@@ -39,7 +41,11 @@ import { TopicDetailComponent } from './components/topic-detail/topic-detail.com
     MomentModule,
     NgxHighlightJsModule.forRoot()
   ],
-  providers: [appRoutingProviders],
+  providers: [
+    appRoutingProviders,
+    UserGuard,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
