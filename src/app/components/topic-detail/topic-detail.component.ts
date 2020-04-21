@@ -33,6 +33,9 @@ export class TopicDetailComponent implements OnInit {
   ){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    if(this.identity== null){
+      this._router.navigate(['/login']);
+    }
     this.comment = new Comments('','','',this.identity._id);
     this.url = global.url;
   }
