@@ -47,6 +47,10 @@ export class TopicService {
   getTopics(page = 1): Observable <any> {
     return this._http.get(this.url + 'topics/' + page);
   }
+
+  search(searchString):Observable<any>{
+    return this._http.get(this.url+'search/'+searchString);
+  }
 }
 
 
